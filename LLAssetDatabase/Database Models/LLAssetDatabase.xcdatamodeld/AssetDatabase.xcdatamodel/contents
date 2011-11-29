@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="872" systemVersion="11C74" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="LLAsset" representedClassName="LLAsset" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="duration" optional="YES" attributeType="Double" defaultValueString="0" syncable="YES"/>
+        <attribute name="orientation" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="group" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="LLAssetGroup" inverseName="assets" inverseEntity="LLAssetGroup" syncable="YES"/>
+        <relationship name="location" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="LLAssetLocation" inverseName="asset" inverseEntity="LLAssetLocation" syncable="YES"/>
+        <relationship name="urls" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LLAssetURL" inverseName="asset" inverseEntity="LLAssetURL" syncable="YES"/>
+    </entity>
+    <entity name="LLAssetGroup" representedClassName="LLAssetGroup" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="persistentID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="assets" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LLAsset" inverseName="group" inverseEntity="LLAsset" syncable="YES"/>
+    </entity>
+    <entity name="LLAssetLocation" representedClassName="LLAssetLocation" syncable="YES">
+        <attribute name="altitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="course" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="horizontalAccuracy" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="speed" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="timestamp" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="verticalAccuracy" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="asset" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="LLAsset" inverseName="location" inverseEntity="LLAsset" syncable="YES"/>
+    </entity>
+    <entity name="LLAssetURL" representedClassName="LLAssetURL" syncable="YES">
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="asset" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="LLAsset" inverseName="urls" inverseEntity="LLAsset" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="LLAssetGroup" positionX="160" positionY="192" width="128" height="120"/>
+        <element name="LLAsset" positionX="421" positionY="243" width="128" height="150"/>
+        <element name="LLAssetURL" positionX="151" positionY="432" width="128" height="90"/>
+        <element name="LLAssetLocation" positionX="-45" positionY="243" width="128" height="180"/>
+    </elements>
+</model>
